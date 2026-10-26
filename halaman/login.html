@@ -18,13 +18,23 @@
 
       <div class="field">
         <label for="password">Kata sandi</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Minimal 8 karakter"
-          autocomplete="current-password"
-        />
+        <div class="input-sandi">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Minimal 8 karakter"
+            autocomplete="current-password"
+          />
+          <button
+            type="button"
+            id="toggleSandi"
+            class="toggle-sandi"
+            aria-pressed="false"
+          >
+            Tampilkan
+          </button>
+        </div>
         <p class="error" id="errPassword" aria-live="polite"></p>
       </div>
 

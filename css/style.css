@@ -626,3 +626,28 @@ header {
 .alert[hidden] {
   display: none;
 }
+
+.input-sandi {
+  position: relative;
+}
+.input-sandi input {
+  padding-right: 6.5rem;
+}
+.toggle-sandi {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  padding: 0.3rem 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.toggle-sandi:hover {
+  background: #c8dcf5;
+}

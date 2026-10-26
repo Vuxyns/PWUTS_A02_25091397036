@@ -1,3 +1,18 @@
+var akunContoh = [
+  {
+    nama: "Budi Santoso",
+    email: "budi@kosabah.com",
+    password: "penghuni123",
+    role: "Penghuni",
+  },
+  {
+    nama: "Siti Rahma",
+    email: "siti@kosabah.com",
+    password: "penghuni456",
+    role: "Penghuni",
+  },
+];
+
 function initLogin() {
   $(document).off(".login");
 
@@ -9,7 +24,28 @@ function initLogin() {
         return;
       }
 
-      alert("Validasi berhasil!");
+      var email = $("#email").val().trim().toLowerCase();
+      var password = $("#password").val();
+
+      var akun = akunContoh.find(function (a) {
+        return a.email === email && a.password === password;
+      });
+
+      if (akun) {
+        alert("Login berhasil sebagai " + akun.role);
+        $("#formLogin")[0].reset();
+      } else {
+        alert("Email atau kata sandi salah");
+      }
+    })
+
+    .on("click.login", "#toggleSandi", function () {
+      var $input = $("#password");
+      var tampil = $input.attr("type") === "password";
+      $input.attr("type", tampil ? "text" : "password");
+      $(this)
+        .text(tampil ? "Sembunyikan" : "Tampilkan")
+        .attr("aria-pressed", String(tampil));
     })
 
     .on("input.login", "#email, #password", function () {
