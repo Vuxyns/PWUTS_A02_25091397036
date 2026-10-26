@@ -16,8 +16,18 @@
       <a href="#beranda" class="brand"
         ><img src="img/logo.svg" alt="" width="34" height="34" /> Kos Abah</a
       >
-      <nav>
-        <a href="#beranda" data-page="beranda">Beranda</a>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Buka menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="navMenu">
+        <a href="#beranda" data-page="beranda" class="active">Beranda</a>
         <a href="#kamar" data-page="kamar">Kamar Tersedia</a>
         <a href="#login" data-page="login" class="nav-login">Login</a>
       </nav>
@@ -88,5 +98,8 @@
     <footer>
       <p>&copy; 2026 Kos Abah.</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
