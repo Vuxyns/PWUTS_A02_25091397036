@@ -210,7 +210,7 @@ function bukaModal(id) {
     <p><strong>Kapasitas:</strong> ${k.kapasitas} orang</p>
     <p><strong>Fasilitas:</strong></p>
     <ul class="list-fasilitas">${daftarFasilitas}</ul>
-    <p class="catatan">Tertarik? Hubungi pemilik di 0800-0000-0000.</p>
+    <p class="catatan">Tertarik? Hubungi pemilik di 08123456789.</p>
   `);
 
   $("#modalKamar").prop("hidden", false);

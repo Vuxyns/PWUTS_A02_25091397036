@@ -10,7 +10,11 @@ $(function () {
       script: "js/kamar.js",
       init: "initKamar",
     },
-    login: { url: "halaman/login.html" },
+    login: {
+      url: "halaman/login.html",
+      script: "js/login.js",
+      init: "initLogin",
+    },
   };
 
   function tutupMenu() {

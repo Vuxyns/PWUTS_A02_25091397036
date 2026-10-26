@@ -1,4 +1,36 @@
-<section>
-  <h2>Login</h2>
-  <p>Form login akan tampil di sini (Step 7).</p>
+<section class="halaman-login">
+  <div class="login-card">
+    <h2>Login</h2>
+    <p class="sub">Masuk untuk melihat kamar, tagihan, dan keluhan Anda.</p>
+
+    <form id="formLogin" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@email.com"
+          autocomplete="username"
+        />
+        <p class="error" id="errEmail" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="password">Kata sandi</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Minimal 8 karakter"
+          autocomplete="current-password"
+        />
+        <p class="error" id="errPassword" aria-live="polite"></p>
+      </div>
+
+      <button type="submit" class="btn-submit">Masuk</button>
+    </form>
+
+    <div id="hasilLogin" class="alert" hidden></div>
+  </div>
 </section>
