@@ -93,10 +93,71 @@ var dataKamar = [
 ];
 
 function initKamar() {
-  var kosong = dataKamar.filter(function (k) {
-    return k.status === "kosong";
+  $(document).off(".kamar");
+
+  $(document)
+    .on(
+      "input.kamar change.kamar",
+      "#cariKamar, #filterTipe, #filterHarga, #urutKamar",
+      terapkanFilter,
+    )
+
+    .on("click.kamar", "#resetFilter", function () {
+      $("#cariKamar").val("");
+      $("#filterTipe").val("");
+      $("#filterHarga").val(1500000);
+      $("#urutKamar").val("");
+      terapkanFilter();
+    })
+
+    .on("click.kamar", ".btn-detail", function () {
+      bukaModal($(this).data("id"));
+    })
+
+    .on("click.kamar", "#tutupModal", tutupModal)
+    .on("click.kamar", "#modalKamar", function (e) {
+      if (e.target === this) {
+        tutupModal();
+      }
+    })
+    .on("keydown.kamar", function (e) {
+      if (e.key === "Escape") {
+        tutupModal();
+      }
+    });
+
+  terapkanFilter();
+}
+
+function terapkanFilter() {
+  var tipe = $("#filterTipe").val();
+  var hargaMax = Number($("#filterHarga").val());
+  var kata = $("#cariKamar").val().toLowerCase().trim();
+  var urut = $("#urutKamar").val();
+
+  $("#labelHarga").text(rupiah(hargaMax));
+
+  var hasil = dataKamar.filter(function (k) {
+    var cocokTipe = tipe === "" || k.tipe === tipe;
+    var cocokHarga = k.harga_sewa <= hargaMax;
+    var cocokKata =
+      kata === "" ||
+      k.nomor_kamar.toLowerCase().includes(kata) ||
+      k.fasilitas.toLowerCase().includes(kata);
+    return k.status === "kosong" && cocokTipe && cocokHarga && cocokKata;
   });
-  tampilKamar(kosong);
+
+  if (urut === "murah") {
+    hasil.sort(function (a, b) {
+      return a.harga_sewa - b.harga_sewa;
+    });
+  } else if (urut === "mahal") {
+    hasil.sort(function (a, b) {
+      return b.harga_sewa - a.harga_sewa;
+    });
+  }
+
+  tampilKamar(hasil);
 }
 
 function rupiah(angka) {
@@ -105,6 +166,11 @@ function rupiah(angka) {
 
 function tampilKamar(daftar) {
   var html = "";
+
+  if (daftar.length === 0) {
+    html =
+      '<p class="pesan">Tidak ada kamar yang sesuai. Coba ubah filter atau kata pencarian.</p>';
+  }
 
   $.each(daftar, function (i, k) {
     html += `
@@ -115,10 +181,41 @@ function tampilKamar(daftar) {
           <h3>Kamar ${k.nomor_kamar}</h3>
           <p class="harga">${rupiah(k.harga_sewa)} <small>/ bulan</small></p>
           <p class="fasilitas">${k.fasilitas}</p>
+          <button type="button" class="btn-detail" data-id="${k.id_kamar}">Detail</button>
         </div>
       </article>`;
   });
 
   $("#daftarKamar").html(html);
   $("#jumlahKamar").text("Menampilkan " + daftar.length + " kamar");
+}
+
+function bukaModal(id) {
+  var k = dataKamar.find(function (x) {
+    return x.id_kamar === id;
+  });
+
+  var daftarFasilitas = k.fasilitas
+    .split(", ")
+    .map(function (f) {
+      return "<li>" + f + "</li>";
+    })
+    .join("");
+
+  $("#modalIsi").html(`
+    <img src="${k.foto}" alt="Kamar ${k.nomor_kamar}" class="modal-foto">
+    <span class="tipe">${k.tipe}</span>
+    <h3 id="modalJudul">Kamar ${k.nomor_kamar}</h3>
+    <p class="harga">${rupiah(k.harga_sewa)} <small>/ bulan</small></p>
+    <p><strong>Kapasitas:</strong> ${k.kapasitas} orang</p>
+    <p><strong>Fasilitas:</strong></p>
+    <ul class="list-fasilitas">${daftarFasilitas}</ul>
+    <p class="catatan">Tertarik? Hubungi pemilik di 0800-0000-0000.</p>
+  `);
+
+  $("#modalKamar").prop("hidden", false);
+}
+
+function tutupModal() {
+  $("#modalKamar").prop("hidden", true);
 }
