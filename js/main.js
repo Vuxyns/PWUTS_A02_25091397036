@@ -5,8 +5,12 @@ $(function () {
   var $toggle = $("#navToggle");
 
   var halaman = {
-    kamar: "halaman/kamar.html",
-    login: "halaman/login.html",
+    kamar: {
+      url: "halaman/kamar.html",
+      script: "js/kamar.js",
+      init: "initKamar",
+    },
+    login: { url: "halaman/login.html" },
   };
 
   function tutupMenu() {
@@ -41,11 +45,19 @@ $(function () {
     $beranda.prop("hidden", true);
     $konten.prop("hidden", false).html("<p>Memuat halaman...</p>");
 
-    $konten.load(halaman[nama], function (respon, status) {
+    var h = halaman[nama];
+
+    $konten.load(h.url, function (respon, status) {
       if (status === "error") {
         $konten.html(
           "<p>Halaman gagal dimuat. Jalankan lewat Live Server, bukan dengan membuka file langsung.</p>",
         );
+        return;
+      }
+      if (h.script) {
+        $.getScript(h.script).done(function () {
+          window[h.init]();
+        });
       }
     });
   }
