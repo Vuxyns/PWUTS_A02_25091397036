@@ -74,4 +74,4 @@ Akun contoh untuk mencoba login:
 
 - FR-01 (profil kos), FR-02 (daftar kamar tersedia), FR-03 (tombol Login), FR-04 (login email dan kata sandi)
 - Tabel `kamar` (kolom data kamar) dan tabel `users` (nama, email, role)
-- Skenario uji: TC-02, TC-03, TC-04, TC-16
+- Skenario uji: TC-01, TC-02, TC-03, TC-04, TC-16

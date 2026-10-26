@@ -106,7 +106,7 @@ function initKamar() {
       $("#cariKamar").val("");
       $("#filterTipe").val("");
       $("#filterHarga").val(1500000);
-      $("#urutKamar").val("");
+      $("#urutKamar").val("murah");
       terapkanFilter();
     })
 
@@ -147,13 +147,13 @@ function terapkanFilter() {
     return k.status === "kosong" && cocokTipe && cocokHarga && cocokKata;
   });
 
-  if (urut === "murah") {
-    hasil.sort(function (a, b) {
-      return a.harga_sewa - b.harga_sewa;
-    });
-  } else if (urut === "mahal") {
+  if (urut === "mahal") {
     hasil.sort(function (a, b) {
       return b.harga_sewa - a.harga_sewa;
+    });
+  } else {
+    hasil.sort(function (a, b) {
+      return a.harga_sewa - b.harga_sewa;
     });
   }
 
