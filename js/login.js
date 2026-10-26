@@ -11,6 +11,12 @@ var akunContoh = [
     password: "penghuni456",
     role: "Penghuni",
   },
+  {
+    nama: "Abah Andung",
+    email: "andung@kosabah.com",
+    password: "admin123",
+    role: "Admin",
+  },
 ];
 
 function initLogin() {
