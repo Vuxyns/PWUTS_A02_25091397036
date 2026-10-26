@@ -1,0 +1,195 @@
+:root {
+  --bg: #f5f9ff;
+  --card: #ffffff;
+  --ink: #1f2f46;
+  --muted: #5a6b82;
+  --primary: #3f72b5;
+  --primary-dark: #2c5a96;
+  --primary-soft: #dbe9fa;
+  --line: #dde8f5;
+  --radius: 14px;
+  --font-head: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --font-body: "Figtree", "Segoe UI", Arial, sans-serif;
+  --sisi: max(1rem, calc((100% - 1100px) / 2));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+a {
+  color: var(--primary);
+}
+[hidden] {
+  display: none !important;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem var(--sisi);
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+nav a {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 500;
+}
+nav a:hover {
+  background: var(--primary-soft);
+}
+nav a.active {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+nav .nav-login {
+  background: var(--primary);
+  color: #fff;
+}
+nav .nav-login:hover {
+  background: var(--primary-dark);
+}
+
+/* ===== 4. Tombol ===== */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 0.5rem 0.5rem 0;
+}
+.btn-primary {
+  background: #fff;
+  color: var(--primary-dark);
+}
+.btn-primary:hover {
+  background: var(--primary-soft);
+}
+.btn-light {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+.btn-light:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.hero {
+  padding: 5rem var(--sisi);
+  color: #fff;
+  background:
+    linear-gradient(rgba(44, 90, 150, 0.78), rgba(44, 90, 150, 0.88)),
+    url("../img/banner.jpg") center / cover no-repeat,
+    var(--primary-dark);
+}
+.hero h1 {
+  font-size: 3rem;
+}
+.hero p {
+  max-width: 34rem;
+  font-size: 1.15rem;
+  margin: 0 0 1.5rem;
+}
+
+.keunggulan,
+.profil,
+.alur,
+.kontak {
+  padding: 3rem var(--sisi);
+}
+h2 {
+  font-size: 1.8rem;
+}
+
+.keunggulan {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.keunggulan h2 {
+  grid-column: 1 / -1;
+}
+.keunggulan article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.keunggulan h3 {
+  color: var(--primary-dark);
+}
+.keunggulan p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.profil {
+  background: var(--card);
+}
+.profil p {
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.alur ol {
+  max-width: 40rem;
+  padding-left: 1.2rem;
+}
+.alur li {
+  margin-bottom: 0.6rem;
+}
+
+.kontak {
+  background: var(--primary-soft);
+}
+.kontak p {
+  margin: 0.2rem 0;
+}
+
+footer {
+  padding: 1.5rem var(--sisi);
+  background: var(--ink);
+  color: #c9d6ea;
+  font-size: 0.9rem;
+}
+footer p {
+  margin: 0;
+}
